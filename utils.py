@@ -1,6 +1,7 @@
-import json
-import requests
 import os
+import json
+
+import requests
 
 
 def load_random_picture():
