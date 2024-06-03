@@ -3,6 +3,11 @@ import json
 
 import requests
 
+IMAGE_SERVICE_URL = 'https://api.unsplash.com/photos/random'
+QUOTE_SERVICE_URL = (
+    'https://shakespeare1.p.rapidapi.com/shakespeare/generate/lorem-ipsum'
+)
+
 
 def load_random_picture():
     unsplash_access_key = os.getenv('UNSPLASH_ACCESS_KEY')
@@ -10,7 +15,7 @@ def load_random_picture():
         'Authorization': f'Client-ID {unsplash_access_key}'
     }
     response = requests.get(
-        'https://api.unsplash.com/photos/random',
+        IMAGE_SERVICE_URL,
         headers=headers
     )
     response.raise_for_status()
@@ -44,7 +49,7 @@ def send_to_teams(image_url, quote):
 
 
 def get_quote():
-    url = 'https://shakespeare1.p.rapidapi.com/shakespeare/generate/lorem-ipsum'
+    url = QUOTE_SERVICE_URL
 
     headers = {
         'X-RapidAPI-Key': os.getenv('RAPIDAPI_KEY'),
